@@ -1,0 +1,13 @@
+drop table if exists hibernate_sequence;
+drop table if exists roles;
+drop table if exists token;
+drop table if exists user_role;
+drop table if exists users;
+create table hibernate_sequence (next_val bigint) engine=InnoDB;
+create table roles (role_id integer not null, role varchar(255), primary key (role_id)) engine=InnoDB;
+create table token (id bigint not null auto_increment, creation_time datetime, token varchar(255), user_id integer not null, primary key (id)) engine=InnoDB;
+create table user_role (user_id integer not null, role_id integer not null, primary key (user_id, role_id)) engine=InnoDB;
+create table users (user_id integer not null, active integer not null, email varchar(255), last_name varchar(255), logged_in integer not null, name varchar(255), password varchar(255), registration_complete_time datetime, user_name varchar(255), primary key (user_id)) engine=InnoDB;
+alter table token add constraint FKj8rfw4x0wjjyibfqq566j4qng foreign key (user_id) references users (user_id);
+alter table user_role add constraint FKt7e7djp752sqn6w22i6ocqy6q foreign key (role_id) references roles (role_id);
+alter table user_role add constraint FKj345gk1bovqvfame88rcx7yyx foreign key (user_id) references users (user_id);

@@ -10,11 +10,11 @@ Providing Registration user interface, login functionality for regular users and
 
 ## Milestones
 
-M1. Registration user interface
-M2. Sending Confirmation mail to the new user
-M3. Login user interface
-M4. Logout
-M5. Reporting user interface for admin user
+1. Registration user interface
+2. Sending Confirmation mail to the new user
+3. Login user interface
+4. Logout
+5. Reporting user interface for admin user
 
 ## Assumptions
 
@@ -94,6 +94,7 @@ Auto generated tokens are stored here and deleted after successful registration.
 Note: No need to create tables and insert data. 
 data.sql script inserts data and hibernate configuration creates tables during app startup.
 
+### Run project
 
 1. mvn clean install
 2. java -jar target/login.jar
@@ -101,7 +102,12 @@ data.sql script inserts data and hibernate configuration creates tables during a
 - http://localhost:8080/registration
 - http://localhost:8080/login
 
+Predefined Admin user credentials : mehmet/123456
+
 ### Docker
 - mvn clean install
 - docker build --tag login .
 - docker run -it -p 8080:8080 --name login
+
+To run MySQL instance on docker(docker-compose.yml)
+- docker-compose up -d
